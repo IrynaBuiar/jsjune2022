@@ -70,7 +70,7 @@ console.log( name);
 let secondname = prompt('Ведіть по-батькові');
 console.log( secondname);
 alert('Вітаємо вас, Ірина ' + secondname + '!');
-let threname = prompt('Скільки, Вам, років');
+let threname = + prompt('Скільки, Вам, років');
 console.log(threname);
 alert('Дякую за відповідь ' + threname + ' хороший вік');
 
