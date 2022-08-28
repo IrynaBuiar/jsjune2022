@@ -12,6 +12,8 @@ let id = 'id'
 let user = JSON.parse(url.searchParams.get('id'));
 console.log(user);
 
+////потрібно для домашнього все що вище
+
 // fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
 //     .then(data => data.json())
 //     .then(user => {
@@ -48,47 +50,57 @@ console.log(user);
 //     .then(user => {
 
 
-        let div = document.createElement('div')
-        document.body.appendChild(div)
+//////потрібно для домашнього все що нижче
 
-        function userNew(user) {
-            for (let key in user) {
-                if (typeof user[key] !== 'object') {
-                    let p = document.createElement('p');
-                    p.innerText = `${key}:${user[key]}`
-                    div.appendChild(p)
-                } else {
-                    userNew(user[key])
-                }
-            }
+let div = document.createElement('div')
+div.classList.add('user')
+document.body.appendChild(div)
+
+function userNew(user) {
+
+    for (let key in user) {
+        if (typeof user[key] !== 'object') {
+            let p = document.createElement('p');
+            p.classList.add('key')
+            p.innerText = `${key}:${user[key]}`
+            div.appendChild(p)
+        } else {
+            userNew(user[key])
         }
-        userNew(user)
+    }
+}
+
+userNew(user)
 
 
 let postsButton = document.createElement('button')
+postsButton.classList.add('postsButton');
 document.body.appendChild(postsButton)
 postsButton.innerText = 'Post of current user'
 postsButton.onclick = function () {
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`)
         .then(response => response.json())
         .then(posts => {
 
-            let container=document.getElementsByClassName('posts')[0]
-            container.innerHTML='';
+            let postsContainer = document.createElement('div')
+            postsContainer.classList.add('posts')
+            document.body.appendChild(postsContainer)
 
-            for (let post of posts){
+            for (let post of posts) {
                 let postContainer = document.createElement('div');
+                postsContainer.appendChild(postContainer)
                 postContainer.classList.add('post');
                 postContainer.innerText = post.title;
 
-            let buttonPost =document.createElement('button');
+                let buttonPost = document.createElement('button');
+                buttonPost.classList.add('buttonPost')
                 postContainer.appendChild(buttonPost);
-                buttonPost.innerText=`more`
-                buttonPost.onclick=function (){
-                location.href = `post-details.html?id=${id}`;
+                buttonPost.innerText = `more`
+                buttonPost.onclick = function () {
+                    location.href = `post-details.html?id=${post.id}`;
                 }
-                container.appendChild(postContainer)
-                            }
+
+            }
 
         })
 

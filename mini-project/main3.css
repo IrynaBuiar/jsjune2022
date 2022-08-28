@@ -1,0 +1,42 @@
+.post{
+    background: #879677;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-evenly;
+    gap: 2%;
+    font-size: large;
+}
+
+.coments{
+    background: #c7c76c;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comentContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.comment {
+    background: #d3e01d;
+    min-width: 200px;
+    height: 200px;
+    width: 33%;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}

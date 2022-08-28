@@ -3,56 +3,53 @@
 // 2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
 // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід  на сторінку user-details.html,
 // котра має детальну інфорацію про об'єкт на який клікнули
+//
+// fetch(' https://jsonplaceholder.typicode.com/users')
+//     .then((response) => response.json())
+//     .then((users) => {
+//         for (let user of users) {
+//             let div = document.createElement('div')
+//             div.innerText = `${user.id} ${user.name}`
+//             console.log(user);
+//             document.body.appendChild(div)
+//
+//             let anchor = document.createElement('a');
+//             anchor.innerText = `click`;
+//             anchor.href = `user-details.html?id=${JSON.stringify(user)}`;
+//             div.appendChild(anchor);
+//
+//         }
+//     })
+
+//////копія нижче
+
+let usersContainer = document.getElementsByClassName('users')[0];
+
 
 fetch(' https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
     .then((users) => {
         for (let user of users) {
             let div = document.createElement('div')
+            div.classList.add('user');
             div.innerText = `${user.id} ${user.name}`
             console.log(user);
             document.body.appendChild(div)
 
             let anchor = document.createElement('a');
+            anchor.classList.add('href')
             anchor.innerText = `click`;
             anchor.href = `user-details.html?id=${JSON.stringify(user)}`;
             div.appendChild(anchor);
 
-            // let button = document.createElement('button');
-            // button.innerText = `click`;
-            // document.body.appendChild(button)
-            // button.onclick = function () {
-            //
-            //
-            //    // localStorage.setItem('users', JSON.stringify(users));
-            //     location.href = `user-details.html?id=${user.id}`;
-            // }
+            usersContainer.appendChild(div);
+
         }
     })
 
 
 
-// fetch(' https://jsonplaceholder.typicode.com/users')
-//     .then((response) => response.json())
-//     .then((users) => {
-//         for (let user of users) {
-//             let div = document.createElement('div')
-//
-//             div.innerText = `${user.id} ${user.name}`
-//             console.log(user);
-//             document.body.appendChild(div)
-//
-//             let button = document.createElement('button');
-//             button.innerText = `click`;
-//             document.body.appendChild(button)
-//             button.onclick = function () {
-//                 localStorage.setItem('users', JSON.stringify(users));
-//                 location.href = `user-details.html?id=${user.id}`;
-//             }
-//         }
-//     })
-//
-//
+
 // На странице user-details.html:
 // 4 Вивести всю, без виключення, інформацію про об'єкт user на який клікнули
 // 5 Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
