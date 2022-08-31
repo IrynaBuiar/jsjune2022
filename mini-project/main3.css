@@ -1,3 +1,6 @@
+body {
+    background: silver;
+}
 .post{
     background: #879677;
     border: 1px solid black;
@@ -8,16 +11,18 @@
     justify-content:space-evenly;
     gap: 2%;
     font-size: large;
-}
+   }
 
 .coments{
+    height: 550px;
     background: #c7c76c;
     border: 1px solid black;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 0.05%;
 }
 
 .comentContainer{
